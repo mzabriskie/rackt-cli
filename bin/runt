@@ -1,0 +1,40 @@
+#!/usr/bin/env node
+
+var runt = {};
+
+runt.build = function build(argv) {
+  console.log('build...');
+};
+
+runt.test = function test(argv) {
+  console.log('test...');
+};
+
+runt.release = function release(argv) {
+  console.log('release...');
+};
+
+runt.pages = function pages(argv) {
+  console.log('pages...');
+};
+
+runt.help = function help() {
+  console.log('Usage: runt <command> [<args>]');
+  console.log('');
+  console.log('Available commands:');
+  console.log(' build     Build the project and copy the generated files to dist/');
+  console.log(' test      Run the test suite');
+  console.log(' release   Publish a new release to npm');
+  console.log(' pages     Deploy the example to gh-pages');
+  console.log(' help      Show this help');
+};
+
+function main(argv) {
+  if (argv._[0] && typeof runt[argv._[0]] === 'function') {
+    runt[argv._[0]](argv);
+  } else {
+    runt.help();
+  }
+}
+
+process.exit(main(require('minimist')(process.argv.slice(2))));

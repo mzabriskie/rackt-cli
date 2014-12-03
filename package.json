@@ -1,0 +1,25 @@
+{
+  "name": "runt",
+  "version": "0.0.0",
+  "description": "Task runner for building, testing, etc.",
+  "main": "./bin/runt",
+  "bin": {
+    "runt": "./bin/runt"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/instructure-react/runt.git"
+  },
+  "author": "Matt Zabriskie",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/instructure-react/runt/issues"
+  },
+  "homepage": "https://github.com/instructure-react/runt",
+  "dependencies": {
+    "minimist": "^1.1.0"
+  }
+}
