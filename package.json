@@ -20,6 +20,12 @@
   },
   "homepage": "https://github.com/instructure-react/runt",
   "dependencies": {
-    "minimist": "^1.1.0"
+    "browserify": "^6.3.3",
+    "karma": "^0.12.28",
+    "minimist": "^1.1.0",
+    "rf-release": "^0.4.0",
+    "uglify-js": "^2.4.15",
+    "webpack": "^1.4.13",
+    "webpack-dev-server": "^1.6.6"
   }
 }
