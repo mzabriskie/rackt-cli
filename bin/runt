@@ -1,11 +1,12 @@
 #!/usr/bin/env node
 
+var path = require('path');
 var exec = require('child_process').exec;
 var runt = {};
 
 function ex(command) {
   exec(command, function (err, stdout, stderr) {
-    if (err) throw new Error(err);
+    if (err) throw err;
     if (stdout) console.log(stdout);
     if (stderr) console.log(stderr);
   });
@@ -20,7 +21,7 @@ runt.build = function build(argv) {
 };
 
 runt.test = function test(argv) {
-  ex('./scripts/test');
+  ex(path.join(__dirname, '/../scripts/test'));
 };
 
 runt.release = function release(argv) {

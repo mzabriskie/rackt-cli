@@ -21,6 +21,7 @@
   "homepage": "https://github.com/instructure-react/runt",
   "dependencies": {
     "browserify": "^6.3.3",
+    "browserify-shim": "^3.8.0",
     "envify": "^3.2.0",
     "expect": "^1.1.0",
     "jsx-loader": "^0.12.2",
