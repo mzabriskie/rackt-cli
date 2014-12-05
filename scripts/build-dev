@@ -1,2 +1,2 @@
 #!/bin/sh
-node_modules/.bin/webpack-dev-server --inline --content-base examples/
+$BASE_DIR/node_modules/.bin/webpack-dev-server --inline --config $BASE_DIR/webpack.config.js --content-base examples/

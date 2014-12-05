@@ -1,22 +1,20 @@
 var fs = require('fs');
 var path = require('path');
 var webpack = require('webpack');
-
-var EXAMPLES_DIR = path.resolve(__dirname, 'examples');
-
-function isDirectory(dir) {
-  return fs.lstatSync(dir).isDirectory();
-}
+var EXAMPLES_DIR = path.resolve(process.cwd(), 'examples');
 
 function buildEntries() {
   return fs.readdirSync(EXAMPLES_DIR).reduce(function (entries, dir) {
-    if (dir === 'build')
+    if (dir === 'build') {
       return entries;
+    }
 
     var isDraft = dir.charAt(0) === '_';
+    var isDirectory = fs.lstatSync(path.join(EXAMPLES_DIR, dir)).isDirectory();
 
-    if (!isDraft && isDirectory(path.join(EXAMPLES_DIR, dir)))
+    if (!isDraft && isDirectory) {
       entries[dir] = path.join(EXAMPLES_DIR, dir, 'app.js');
+    }
 
     return entries;
   }, {});

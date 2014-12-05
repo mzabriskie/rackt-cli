@@ -1,11 +1,27 @@
 #!/usr/bin/env node
 
+var pkg = require(process.cwd() + '/package.json');
 var path = require('path');
 var exec = require('child_process').exec;
 var runt = {};
+var BASE_DIR = path.join(__dirname, '/../');
 
-function ex(command) {
-  exec(command, function (err, stdout, stderr) {
+function PascalCase(str) {
+  var parts = str.split('-');
+  for (var i=0, l=parts.length; i<l; i++) {
+    parts[i] = parts[i].substring(0, 1).toUpperCase() + parts[i].substring(1);
+  }
+  return parts.join('');
+}
+
+function ex(command, vars) {
+  vars = vars || {};
+  vars.BASE_DIR = BASE_DIR;
+  vars = Object.keys(vars).map(function (key) {
+    return key + '=' + vars[key];
+  }).join(' ');
+
+  exec(vars + ' ' + command, function (err, stdout, stderr) {
     if (err) throw err;
     if (stdout) console.log(stdout);
     if (stderr) console.log(stderr);
@@ -14,21 +30,24 @@ function ex(command) {
 
 runt.build = function build(argv) {
   if (argv.dev || argv.D) {
-    ex('./scripts/build-dev');
+    ex(BASE_DIR + '/scripts/build-dev');
   } else {
-    ex('./scripts/build');
+    ex(BASE_DIR + '/scripts/build', {
+      COMPONENT_NAME: PascalCase(pkg.name),
+      COMPONENT_FILE: pkg.name
+    });
   }
 };
 
 runt.test = function test(argv) {
-  ex(path.join(__dirname, '/../scripts/test'));
+  ex(BASE_DIR + '/scripts/test');
 };
 
 runt.release = function release(argv) {
   if (argv.preview || argv.P) {
-    ex('./scripts/release-preview');
+    ex(BASE_DIR + '/scripts/release-preview');
   } else {
-    ex('./scripts/release');
+    ex(BASE_DIR + '/scripts/release');
   }
 };
 
