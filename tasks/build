@@ -1,0 +1,19 @@
+#!/bin/sh
+
+if [ "$1" == "--dev" ] || [ "$1" == "-D" ] || [ "$1" == "-d" ]; then
+  # Developer mode
+  $RUNT_PATH/node_modules/.bin/webpack-dev-server --inline --config $RUNT_PATH/webpack.config.js --content-base examples/
+else
+  # Build for release
+  mkdir -p dist
+
+  NODE_ENV=production $RUNT_PATH/node_modules/.bin/browserify lib/index.js \
+  -t reactify \
+  -t browserify-shim \
+  -t envify \
+  --detect-globals false \
+  -s $COMPONENT_NAME > dist/$COMPONENT_FILE.js
+
+  $RUNT_PATH/node_modules/.bin/uglifyjs dist/$COMPONENT_FILE.js \
+  --compress warnings=false > dist/$COMPONENT_FILE.min.js
+fi

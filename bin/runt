@@ -1,77 +1,40 @@
-#!/usr/bin/env node
+#!/bin/sh
 
-var pkg = require(process.cwd() + '/package.json');
-var path = require('path');
-var exec = require('child_process').exec;
-var runt = {};
-var BASE_DIR = path.join(__dirname, '/../');
+# get the task
+TASK=$1
+shift
 
-function PascalCase(str) {
-  var parts = str.split('-');
-  for (var i=0, l=parts.length; i<l; i++) {
-    parts[i] = parts[i].substring(0, 1).toUpperCase() + parts[i].substring(1);
-  }
-  return parts.join('');
-}
+# default to help if no task was specified
+if [ -z "$TASK" ]; then
+  TASK=help
+fi
 
-function ex(command, vars) {
-  vars = vars || {};
-  vars.BASE_DIR = BASE_DIR;
-  vars = Object.keys(vars).map(function (key) {
-    return key + '=' + vars[key];
-  }).join(' ');
+# get the path of this actual script file
+pushd . > /dev/null
+SCRIPT_PATH="${BASH_SOURCE[0]}";
+while([ -h "${SCRIPT_PATH}" ]); do
+  cd "`dirname "${SCRIPT_PATH}"`"
+  SCRIPT_PATH="$(readlink "`basename "${SCRIPT_PATH}"`")";
+done
+cd "`dirname "${SCRIPT_PATH}"`" > /dev/null
+SCRIPT_PATH="`pwd`";
+popd > /dev/null
 
-  exec(vars + ' ' + command, function (err, stdout, stderr) {
-    if (err) throw err;
-    if (stdout) console.log(stdout);
-    if (stderr) console.log(stderr);
-  });
-}
+# get the path to the task
+TASK_PATH=$SCRIPT_PATH/../tasks/$TASK
 
-runt.build = function build(argv) {
-  if (argv.dev || argv.D) {
-    ex(BASE_DIR + '/scripts/build-dev');
-  } else {
-    ex(BASE_DIR + '/scripts/build', {
-      COMPONENT_NAME: PascalCase(pkg.name),
-      COMPONENT_FILE: pkg.name
-    });
-  }
-};
+# exit -1 if task script doesn't exist
+if [ ! -f $TASK_PATH ]; then
+  echo "Unknown command" $TASK
+  exit -1
+fi
 
-runt.test = function test(argv) {
-  ex(BASE_DIR + '/scripts/test');
-};
+# set ENV vars
+export FOO="foo foo foo!"
+export RUNT_PATH=$SCRIPT_PATH/../
+# TODO: These need to come from package.json
+export COMPONENT_NAME=ReactModal
+export COMPONENT_FILE=react-modal
 
-runt.release = function release(argv) {
-  if (argv.preview || argv.P) {
-    ex(BASE_DIR + '/scripts/release-preview');
-  } else {
-    ex(BASE_DIR + '/scripts/release');
-  }
-};
-
-runt.pages = function pages(argv) {
-  console.log('pages...');
-};
-
-runt.help = function help() {
-  console.log('Usage: runt <command> [<args>]');
-  console.log('');
-  console.log('Available commands:');
-  console.log(' build     Build the project and copy the generated files to dist/');
-  console.log(' test      Run the test suite');
-  console.log(' release   Publish a new release to npm');
-  console.log(' pages     Deploy the example to gh-pages');
-  console.log(' help      Show this help');
-};
-
-function main(argv) {
-  if (argv._[0] && typeof runt[argv._[0]] === 'function') {
-    runt[argv._[0]](argv);
-  } else {
-    runt.help();
-  }
-}
-
-main(require('minimist')(process.argv.slice(2)));
+# DO IT!
+$TASK_PATH "$@"

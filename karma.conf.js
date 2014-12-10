@@ -1,18 +1,21 @@
+var path = require('path');
+var test = path.join(process.cwd(), 'specs/main.js');
+
 module.exports = function(config) {
-  config.set({
+  var conf = {
 
     basePath: '',
 
     frameworks: ['mocha', 'browserify'],
 
     files: [
-    'specs/main.js'
+      test
     ],
 
     exclude: [],
 
     preprocessors: {
-      'specs/main.js': ['browserify']
+
     },
 
     browserify: {
@@ -36,5 +39,9 @@ module.exports = function(config) {
     captureTimeout: 60000,
 
     singleRun: false
-  });
+  };
+
+  conf.preprocessors[test] = ['browserify'];
+
+  config.set(conf);
 };

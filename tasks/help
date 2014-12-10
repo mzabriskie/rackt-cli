@@ -1,0 +1,12 @@
+#!/bin/sh
+
+echo "Usage: runt <command> [<args>]"
+echo ""
+echo "Available commands:"
+echo "  build     Build the project"
+echo "            Use --dev or -d to build examples"
+echo "  release   Publish a new release to npm"
+echo "            Use --preview or -p to preview release"
+echo "  test      Run the test suite"
+echo "  pages     Deploy the example to gh-pages"
+echo "  help      Show this help"

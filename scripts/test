@@ -1,2 +1,0 @@
-#!/bin/sh
-NODE_ENV=test $BASE_DIR/node_modules/.bin/karma start $BASE_DIR/karma.conf.js "$@"
