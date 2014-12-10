@@ -30,11 +30,9 @@ if [ ! -f $TASK_PATH ]; then
 fi
 
 # set ENV vars
-export FOO="foo foo foo!"
 export RUNT_PATH=$SCRIPT_PATH/../
-# TODO: These need to come from package.json
-export COMPONENT_NAME=ReactModal
-export COMPONENT_FILE=react-modal
+export COMPONENT_NAME=$($RUNT_PATH/lib/get_component_name.js)
+export COMPONENT_FILE=$($RUNT_PATH/lib/get_component_file.js)
 
 # DO IT!
 $TASK_PATH "$@"
