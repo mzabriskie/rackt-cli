@@ -4,8 +4,8 @@
 TASK=$1
 shift
 
-# default to help if no task was specified
-if [ -z "$TASK" ]; then
+# default to help if no task was specified or if help was requested
+if [ -z "$TASK" ] || [ "$TASK" == "-h" ] || [ "$TASK" == "--help" ]; then
   TASK=help
 fi
 
