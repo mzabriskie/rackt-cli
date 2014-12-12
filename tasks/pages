@@ -1,0 +1,29 @@
+#!/bin/sh -x
+
+# delete gh-pages branch
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+if [ "$BRANCH" == "gh-pages" ]; then
+  git checkout master
+fi
+git branch -D gh-pages
+git push origin :gh-pages
+
+# build examples
+$RUNT_PATH/node_modules/.bin/webpack --config $RUNT_PATH/webpack.config.js
+
+# remove superfluous files
+find . -type f | egrep -v ".git/|examples/" | xargs rm
+find . -type d -empty -delete
+rm -rf node_modules
+
+# move example files to root
+mv examples/* ./
+rm -rf examples/
+
+# create gh-pages branch
+git checkout -b gh-pages
+git add .
+git commit -m "updating gh-pages"
+git push -f origin gh-pages
+git checkout $BRANCH
