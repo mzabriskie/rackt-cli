@@ -23,6 +23,7 @@ rm -rf examples/
 
 # create gh-pages branch
 git checkout -b gh-pages
+git rm -rf .
 git add .
 git commit -m "updating gh-pages"
 git push -f origin gh-pages
