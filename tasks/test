@@ -1,2 +1,8 @@
 #!/bin/sh
-NODE_ENV=test $RUNT_PATH/node_modules/.bin/karma start $RUNT_PATH/karma.conf.js "$@"
+
+CI=""
+if [ "$1" == "--ci" ]; then
+  CI="--single-run"
+fi
+
+NODE_ENV=test $RUNT_PATH/node_modules/.bin/karma start $RUNT_PATH/karma.conf.js "$@" "$CI"
