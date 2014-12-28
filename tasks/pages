@@ -5,7 +5,7 @@ DIRTY=$(git status | grep modified -c)
 let DIRTY+=$(git status | grep Untracked -c)
 
 if [ $DIRTY -gt 0 ] && [ "$1" != "-f" ]; then
-  echo Refusing to operate on unclean working directory
+  echo "\033[0;31m"Refusing to operate on unclean working directory"\033[0m"
   echo Use \"git status\" to see which files have been modified
   exit 1
 fi
@@ -30,6 +30,9 @@ rm -rf node_modules
 # move example files to root
 mv examples/* ./
 rm -rf examples/
+
+# add jekyll config
+echo "include: [__build__]" > _config.yml
 
 # create gh-pages branch
 git checkout -b gh-pages
