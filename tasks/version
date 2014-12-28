@@ -1,0 +1,5 @@
+#!/bin/sh
+
+VERSION=$($RUNT_PATH/lib/get_version.js)
+
+echo $VERSION

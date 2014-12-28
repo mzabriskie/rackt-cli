@@ -5,8 +5,13 @@ TASK=$1
 shift
 
 # default to help if no task was specified or if help was requested
-if [ -z "$TASK" ] || [ "$TASK" == "-h" ] || [ "$TASK" == "--help" ]; then
+if [ -z "$TASK" ] || [ "$TASK" == "--help" ] || [ "$TASK" == "-h" ]; then
   TASK=help
+fi
+
+# show version if flag set
+if [ "$TASK" == "--version" ] || [ "$TASK" == "-v" ]; then
+  TASK=version
 fi
 
 # get the path of this actual script file
