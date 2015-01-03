@@ -1,4 +1,4 @@
-# runt
+# rackt-cli
 
 Command line utility for automating common tasks when building React.js components.
 
