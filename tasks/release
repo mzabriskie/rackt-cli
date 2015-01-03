@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if [ "$1" == "--preview" ] || [ "$1" == "-P" ] || [ "$1" == "-p" ]; then
   # Preview release

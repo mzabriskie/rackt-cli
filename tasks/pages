@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # make sure working directory is clean
 DIRTY=$(git status | grep modified -c)

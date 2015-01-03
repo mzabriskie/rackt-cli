@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 CI=""
 if [ "$1" == "--ci" ]; then

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 VERSION=$($RACKT_PATH/lib/get_version.js)
 
