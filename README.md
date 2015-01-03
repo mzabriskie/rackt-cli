@@ -1,30 +1,30 @@
 # runt
 
-Task runner for building react components.
+Command line utility for automating common tasks when building React.js components.
 
 Designed to be used in conjunction with [originate-react-component](https://github.com/knomedia/originate-react-component).
 
 ## Installing
 
 ```bash
-$ npm install -g runt
+$ npm install -g rackt-cli
 ```
 
 ## Tasks
 
 ```bash
 # Building
-$ runt build
+$ rackt build
 
 # Dev mode
-$ runt dev
+$ rackt dev
 
 # Releasing
-$ runt release
+$ rackt release
 
 # Testing
-$ runt test
+$ rackt test
 
 # Publish gh-pages
-$ runt pages
+$ rackt pages
 ```

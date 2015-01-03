@@ -20,7 +20,7 @@ git branch -D gh-pages
 git push origin :gh-pages
 
 # build examples
-$RUNT_PATH/node_modules/.bin/webpack --config $RUNT_PATH/webpack.config.js
+$RACKT_PATH/node_modules/.bin/webpack --config $RACKT_PATH/webpack.config.js
 
 # remove superfluous files
 find . -type f | egrep -v ".git/|examples/" | xargs rm

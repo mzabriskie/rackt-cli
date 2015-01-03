@@ -1,5 +1,5 @@
 #!/bin/sh
 
-VERSION=$($RUNT_PATH/lib/get_version.js)
+VERSION=$($RACKT_PATH/lib/get_version.js)
 
 echo $VERSION

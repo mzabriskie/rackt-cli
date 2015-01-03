@@ -35,9 +35,9 @@ if [ ! -f $TASK_PATH ]; then
 fi
 
 # set ENV vars
-export RUNT_PATH=$SCRIPT_PATH/../
-export COMPONENT_NAME=$($RUNT_PATH/lib/get_component_name.js)
-export COMPONENT_FILE=$($RUNT_PATH/lib/get_component_file.js)
+export RACKT_PATH=$SCRIPT_PATH/../
+export COMPONENT_NAME=$($RACKT_PATH/lib/get_component_name.js)
+export COMPONENT_FILE=$($RACKT_PATH/lib/get_component_file.js)
 
 # DO IT!
 $TASK_PATH "$@"

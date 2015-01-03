@@ -2,9 +2,9 @@
 
 if [ "$1" == "--preview" ] || [ "$1" == "-P" ] || [ "$1" == "-p" ]; then
   # Preview release
-  $RUNT_PATH/node_modules/rf-release/node_modules/.bin/changelog -t preview -s
+  $RACKT_PATH/node_modules/rf-release/node_modules/.bin/changelog -t preview -s
 else
   # Release to npm
-  $RUNT_PATH/tasks/build
-  $RUNT_PATH/node_modules/.bin/release
+  $RACKT_PATH/tasks/build
+  $RACKT_PATH/node_modules/.bin/release
 fi

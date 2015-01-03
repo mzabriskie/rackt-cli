@@ -5,4 +5,4 @@ if [ "$1" == "--ci" ]; then
   CI="--single-run"
 fi
 
-NODE_ENV=test $RUNT_PATH/node_modules/.bin/karma start $RUNT_PATH/karma.conf.js "$@" "$CI"
+NODE_ENV=test $RACKT_PATH/node_modules/.bin/karma start $RACKT_PATH/karma.conf.js "$@" "$CI"

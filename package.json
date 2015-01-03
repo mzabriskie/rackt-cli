@@ -1,36 +1,39 @@
 {
-  "name": "runt",
-  "version": "0.0.0",
-  "description": "Task runner for building, testing, etc.",
-  "main": "./bin/runt",
+  "name": "rackt-cli",
+  "version": "0.1.0",
+  "description": "Command line utility for automating common tasks when building React.js components",
+  "main": "./bin/rackt",
   "bin": {
-    "runt": "./bin/runt"
+    "rackt": "./bin/rackt"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/instructure-react/runt.git"
+    "url": "https://github.com/instructure-react/rackt-cli.git"
   },
   "author": "Matt Zabriskie",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/instructure-react/runt/issues"
+    "url": "https://github.com/instructure-react/rackt-cli/issues"
   },
-  "homepage": "https://github.com/instructure-react/runt",
+  "homepage": "https://github.com/instructure-react/rackt-cli",
   "dependencies": {
     "browserify": "^6.3.3",
     "browserify-shim": "^3.8.0",
     "envify": "^3.2.0",
-    "expect": "^1.1.0",
     "jsx-loader": "^0.12.2",
     "karma": "^0.12.28",
     "karma-browserify": "^1.0.0",
     "karma-chrome-launcher": "^0.1.6",
     "karma-cli": "0.0.4",
     "karma-firefox-launcher": "^0.1.3",
+    "karma-ie-launcher": "^0.1.5",
     "karma-mocha": "^0.1.9",
+    "karma-opera-launcher": "^0.1.0",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "karma-safari-launcher": "^0.1.1",
     "minimist": "^1.1.0",
     "mocha": "^2.0.1",
     "react": "^0.12.1",

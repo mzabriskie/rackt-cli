@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "Usage: runt <command> [<args>]"
+echo "Usage: rackt <command> [<args>]"
 echo ""
 echo "Available commands:"
 echo "  build     Build the project"
