@@ -1,5 +1,3 @@
 #!/bin/bash
 
-VERSION=$($RACKT_PATH/lib/get_version.js)
-
-echo $VERSION
+echo $(node -p "require('$RACKT_PATH/package').version")
