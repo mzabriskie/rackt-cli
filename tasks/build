@@ -1,13 +1,7 @@
-#!/bin/bash
+#!/bin/bash -e
+
+BUILD="$RACKT_PATH/node_modules/.bin/webpack --devtool source-map --config $RACKT_PATH/webpack.build.js"
 
 mkdir -p dist
-
-NODE_ENV=production $RACKT_PATH/node_modules/.bin/browserify lib/main.js \
--t reactify \
--t browserify-shim \
--t envify \
---detect-globals false \
--s $COMPONENT_NAME > dist/$COMPONENT_FILE.js
-
-$RACKT_PATH/node_modules/.bin/uglifyjs dist/$COMPONENT_FILE.js \
---compress warnings=false > dist/$COMPONENT_FILE.min.js
+eval $BUILD
+eval "MINIFY=1 $BUILD"
