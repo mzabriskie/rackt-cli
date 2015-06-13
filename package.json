@@ -1,6 +1,6 @@
 {
   "name": "rackt-cli",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Command line utility for automating common tasks when building React.js components",
   "main": "./bin/rackt",
   "bin": {
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/instructure-react/rackt-cli.git"
+    "url": "https://github.com/mzabriskie/rackt-cli.git"
   },
   "author": "Matt Zabriskie",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/instructure-react/rackt-cli/issues"
+    "url": "https://github.com/mzabriskie/rackt-cli/issues"
   },
-  "homepage": "https://github.com/instructure-react/rackt-cli",
+  "homepage": "https://github.com/mzabriskie/rackt-cli",
   "dependencies": {
     "babel-core": "^5.5.6",
     "babel-loader": "^5.1.4",
