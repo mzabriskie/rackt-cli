@@ -22,5 +22,14 @@ module.exports = {
   externals: {
     'react': 'React'
   },
+  module: {
+    loaders: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: path.resolve(process.env.RACKT_PATH, 'node_modules/babel-loader')
+      }
+    ]
+  },
   plugins: plugins
 };
