@@ -3,26 +3,13 @@ var test = path.join(process.cwd(), 'specs/main.js');
 
 module.exports = function(config) {
   var conf = {
-
     basePath: '',
 
-    frameworks: ['mocha', 'browserify'],
+    frameworks: ['mocha'],
 
-    files: [
-      test
-    ],
+    files: [test],
 
-    exclude: [],
-
-    preprocessors: {
-
-    },
-
-    browserify: {
-      transform: ['envify', 'reactify'],
-      watch: true,
-      debug: true
-    },
+    preprocessors: {},
 
     reporters: ['progress'],
 
@@ -38,10 +25,29 @@ module.exports = function(config) {
 
     captureTimeout: 60000,
 
-    singleRun: false
+    singleRun: false,
+
+    webpack: {
+      cache: true,
+      module: {
+        loaders: [
+          {
+            test: /\.js$/,
+            exclude: /node_modules/,
+            loader: path.resolve(process.env.RACKT_PATH, 'node_modules/babel-loader')
+          }
+        ]
+      }
+    },
+
+    webpackServer: {
+      stats: {
+        colors: true
+      }
+    }
   };
 
-  conf.preprocessors[test] = ['browserify'];
+  conf.preprocessors[test] = ['webpack'];
 
   config.set(conf);
 };
