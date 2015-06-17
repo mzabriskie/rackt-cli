@@ -1,7 +1,20 @@
 #!/bin/bash -e
 
-BUILD="$RACKT_PATH/node_modules/.bin/webpack --devtool source-map --config $RACKT_PATH/webpack.build.js"
+babel=$RACKT_PATH/node_modules/.bin/babel
+webpack=$RACKT_PATH/node_modules/.bin/webpack
+BUILD="$webpack --devtool source-map --config $RACKT_PATH/webpack.build.js"
 
+# Clean old build
+rm -rf build/
+
+# Transpile ES6
+$babel -d build/lib ./lib
+
+# Generate bundle
 mkdir -p dist
 eval $BUILD
 eval "MINIFY=1 $BUILD"
+
+# Copy package
+cp README.md build/
+node -p 'p=require("./package");p.main="lib/main.js";p.scripts=p.devDependencies=undefined;JSON.stringify(p,null,2)' > build/package.json

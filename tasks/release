@@ -6,5 +6,5 @@ if [ "$1" == "--preview" ] || [ "$1" == "-P" ] || [ "$1" == "-p" ]; then
 else
   # Release to npm
   $RACKT_PATH/tasks/build
-  $RACKT_PATH/node_modules/.bin/release
+  $RACKT_PATH/node_modules/.bin/release -f ./build
 fi
