@@ -1,5 +1,22 @@
+var fs = require('fs');
 var path = require('path');
-var test = path.join(process.cwd(), 'specs/main.js');
+var REGEX_TEST = /\-test\.js$/;
+
+function findTests(dir) {
+  var tests = [];
+  fs.readdirSync(dir).forEach(function (file) {
+    file = path.resolve(dir, file);
+    var stat = fs.statSync(file);
+    if (stat && stat.isDirectory()) {
+      tests = tests.concat(findTests(file));
+    } else if (REGEX_TEST.test(file)) {
+      tests.push(file);
+    }
+  });
+  return tests;
+}
+
+var tests = findTests(path.resolve(process.cwd(), 'lib'));
 
 module.exports = function(config) {
   var conf = {
@@ -7,11 +24,11 @@ module.exports = function(config) {
 
     frameworks: ['mocha'],
 
-    files: [test],
+    files: tests,
 
     preprocessors: {},
 
-    reporters: ['progress'],
+    reporters: ['dots'],
 
     port: 9876,
 
@@ -29,6 +46,7 @@ module.exports = function(config) {
 
     webpack: {
       cache: true,
+      devtool: 'inline-source-map',
       module: {
         loaders: [
           {
@@ -47,7 +65,9 @@ module.exports = function(config) {
     }
   };
 
-  conf.preprocessors[test] = ['webpack'];
+  tests.forEach(function (test) {
+    conf.preprocessors[test] = ['webpack', 'sourcemap'];
+  });
 
   config.set(conf);
 };
