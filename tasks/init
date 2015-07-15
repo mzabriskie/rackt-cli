@@ -1,0 +1,5 @@
+#!/bin/bash -e
+
+originate=$RACKT_PATH/node_modules/.bin/originate
+
+$originate react-component $1
