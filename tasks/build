@@ -17,4 +17,4 @@ eval "MINIFY=1 $BUILD"
 
 # Copy package
 cp README.md build/
-node -p 'p=require("./package");p.main="lib/main.js";p.scripts=p.devDependencies=undefined;JSON.stringify(p,null,2)' > build/package.json
+node -p 'p=require("./package");p.scripts=p.devDependencies=undefined;JSON.stringify(p,null,2)' > build/package.json
