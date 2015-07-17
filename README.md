@@ -18,5 +18,5 @@ $ npm install -g rackt-cli
 | rackt release          | Publish a new release to npm. Use `--preview` or `-p` to preview release. |
 | rackt test             | Run the test suite. Use `--ci` for single run                             |
 | rackt pages            | Deploy the examples to gh-pages                                           |
-| rackt help             | Show this help                                                            |
+| rackt help             | Show the help                                                             |
 
