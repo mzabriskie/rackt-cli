@@ -1,12 +1,7 @@
 #!/bin/bash
 
-CI=""
-if [ "$1" == "--ci" ]; then
-  CI="--single-run"
-fi
-
 eslint=$RACKT_PATH/node_modules/.bin/eslint
 karma=$RACKT_PATH/node_modules/.bin/karma
 
 $eslint -c $RACKT_PATH/.eslintrc lib examples && \
-NODE_ENV=test $karma start $RACKT_PATH/karma.conf.js "$@" "$CI"
+NODE_ENV=test $karma start $RACKT_PATH/karma.conf.js "$@"
