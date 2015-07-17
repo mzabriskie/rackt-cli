@@ -1,7 +1,7 @@
 {
   "name": "rackt-cli",
   "version": "0.3.2",
-  "description": "Command line utility for automating common tasks when building React.js components",
+  "description": "Command line interface for automating common tasks when building React.js components",
   "main": "./bin/rackt",
   "bin": {
     "rackt": "./bin/rackt"
