@@ -24,3 +24,6 @@ $ npm install -g rackt-cli
 | `rackt test`        | Runs the test suite. Use `--single-run` for single run.               |
 | `rackt pages`       | Deploys the examples to gh-pages.                                     |
 
+## License
+
+MIT
