@@ -35,7 +35,7 @@
 
 - [166348e](../../commit/166348e) Removing error triggered by running `rackt` on a non-project directory.
 - [b0f65b4](../../commit/b0f65b4) Adding ability to generate a component.
-- [b08cf8e](../../commit/b08cf8e) Adding ESlint to testing.
+- [b08cf8e](../../commit/b08cf8e) Adding ESLint to testing.
 - [1bbf5e6](../../commit/1bbf5e6) Honoring `main` in package.json as component entry.
 - [c10754d](../../commit/c10754d) Changing `test --ci` option to use standard `--single-run`.
 - [d0b6a01](../../commit/d0b6a01) Renaming `dev` command to `server`.
