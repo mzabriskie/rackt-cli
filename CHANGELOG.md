@@ -40,3 +40,8 @@
 - [c10754d](../../commit/c10754d) Changing `test --ci` option to use standard `--single-run`.
 - [d0b6a01](../../commit/d0b6a01) Renaming `dev` command to `server`.
 - [fe8e9ad](../../commit/fe8e9ad) Allowing additional parameters to be passed to dev server.
+
+### 0.5.0 (Aug 10, 2015)
+
+- [ff47111](../../commit/ff47111) Making things more stable by getting rid of semver ranges.
+- [8a22df4](../../commit/8a22df4) Updating ESLint config.
