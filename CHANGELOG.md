@@ -45,3 +45,7 @@
 
 - [ff47111](../../commit/ff47111) Making things more stable by getting rid of semver ranges.
 - [8a22df4](../../commit/8a22df4) Updating ESLint config.
+
+### 0.5.1 (Aug 10, 2015)
+
+- [2dd7e75](../../commit/2dd7e75) Updating dependencies.
