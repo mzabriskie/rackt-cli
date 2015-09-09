@@ -24,7 +24,8 @@ module.exports = {
     libraryTarget: 'umd'
   },
   externals: {
-    'react': 'React'
+    'react': 'React',
+    'react/addons': 'React'
   },
   module: {
     loaders: [
