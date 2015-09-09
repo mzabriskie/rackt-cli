@@ -49,3 +49,7 @@
 ### 0.5.1 (Aug 10, 2015)
 
 - [2dd7e75](../../commit/2dd7e75) Updating dependencies.
+
+### 0.5.2 (Sep 09, 2015)
+
+- [6f2facf](../../commit/6f2facf) Fixing issue with React being bundled with components.
