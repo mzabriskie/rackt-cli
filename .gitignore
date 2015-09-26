@@ -1,4 +1,4 @@
 node_modules/
-user.eslint.json
+user..eslintrc
 user.webpack.config.js
 user.webpack.build.js
