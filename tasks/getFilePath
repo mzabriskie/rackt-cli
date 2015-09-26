@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# returns given file path if exists in user local directory and fallback to rackt-cli version
+
+function getFilePath() {
+  if [[ -f $1 ]] ; then
+    # if file defined in user-land, copy it to rackt folder with the "user." prefix
+    # if we dont do this, webpack-dev-server cant locate webpack node module
+    # may happen if rackt-cli is not installed globally
+    cp $1 $RACKT_PATH/user.$1
+    echo $RACKT_PATH/user.$1
+  else
+    echo $RACKT_PATH/$1
+  fi
+}

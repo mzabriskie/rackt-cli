@@ -20,7 +20,12 @@ git branch -D gh-pages
 git push origin :gh-pages
 
 # build examples
-$RACKT_PATH/node_modules/.bin/webpack --config $RACKT_PATH/webpack.config.js
+
+# get user defined config if any or use rackt-cli one
+. $RACKT_PATH/tasks/getFilePath
+webpackConfig=`getFilePath webpack.config.js`
+
+$RACKT_PATH/node_modules/.bin/webpack --config $webpackConfig
 
 # remove superfluous files
 find . -type f | egrep -v ".git/|examples/" | xargs rm

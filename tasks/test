@@ -3,5 +3,10 @@
 eslint=$RACKT_PATH/node_modules/.bin/eslint
 karma=$RACKT_PATH/node_modules/.bin/karma
 
-$eslint -c $RACKT_PATH/eslint.json lib examples && \
-NODE_ENV=test $karma start $RACKT_PATH/karma.conf.js "$@"
+
+# get user defined config if any or use rackt-cli one
+. $RACKT_PATH/tasks/getFilePath
+esLintConfig=`getFilePath eslint.json`
+
+$eslint -c $esLintConfig lib examples && \n
+NODE_ENV=test $karma start $RACKT_PATH/karma.conf.js \"$@\"

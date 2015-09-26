@@ -2,7 +2,12 @@
 
 babel=$RACKT_PATH/node_modules/.bin/babel
 webpack=$RACKT_PATH/node_modules/.bin/webpack
-BUILD="$webpack --devtool source-map --config $RACKT_PATH/webpack.build.js"
+
+# # get user defined config if any or use rackt-cli one
+. $RACKT_PATH/tasks/getFilePath
+webpackConfig=`getFilePath webpack.build.js`
+
+BUILD="$webpack --devtool source-map --config $webpackConfig"
 
 # Clean old build
 rm -rf build/

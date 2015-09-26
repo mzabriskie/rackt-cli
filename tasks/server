@@ -2,4 +2,8 @@
 
 server=$RACKT_PATH/node_modules/.bin/webpack-dev-server
 
-$server --inline --config $RACKT_PATH/webpack.config.js --content-base examples/ "$@"
+# get user defined config if any or use rackt-cli one
+. $RACKT_PATH/tasks/getFilePath
+webpackConfig=`getFilePath webpack.config.js`
+
+$server --inline --config $webpackConfig --content-base examples/ "$@"
