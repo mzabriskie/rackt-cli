@@ -2,3 +2,4 @@ node_modules/
 user..eslintrc
 user.webpack.config.js
 user.webpack.build.js
+user.karma.conf.js
