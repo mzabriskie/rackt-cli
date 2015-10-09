@@ -10,5 +10,5 @@ karmaConfig=`getFilePath karma.conf.js`
 # get user defined config if any or use rackt-cli one
 esLintConfig=`getFilePath .eslintrc`
 
-$eslint -c $esLintConfig lib examples && \n
+#$eslint -c $esLintConfig lib examples && \n
 NODE_ENV=test $karma start $karmaConfig \"$@\"
