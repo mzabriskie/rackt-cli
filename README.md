@@ -39,6 +39,8 @@ This command will generate two new folders within your component's folder.
 A `dist/` folder contains a UMD version of your project, which is ideal for releasing to bower.
 A `build/` folder will contain a transpiled version of your original source, un-bundled, for releasing to npm.
 
+Note : use the `build` folder if you need to `npm link` this package.
+
 #### `server`
 
 The `server` command uses [webpack-dev-server](http://webpack.github.io/docs/webpack-dev-server.html) to serve your examples in the browser.
@@ -57,6 +59,14 @@ You can put these files alongside your source, or under sub-folders like `__test
 #### `pages`
 
 The `pages` command will deploy your examples to a `gh-pages` branch.
+
+## Customize
+
+ - If needed, you can override some default configs files in your project :
+
+    - webpack.config.js
+    - webpack.build.js
+    - .eslintrc
 
 ## License
 

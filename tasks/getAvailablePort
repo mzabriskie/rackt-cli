@@ -1,0 +1,22 @@
+#!/bin/sh
+
+function is_port_free {
+    netstat -n | grep ${1:-8080} -q ;
+    if [ $? -eq 1 ]
+    then
+        return 0
+    else
+        return 1
+    fi
+}
+
+function get_free_port {
+  # start at 8080 by default
+  PORT=${1:-8080}
+  while ! is_port_free $PORT; do
+    PORT=$((PORT+1))
+  done
+  echo $PORT
+}
+
+get_free_port $1

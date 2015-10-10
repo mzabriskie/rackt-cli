@@ -2,19 +2,29 @@
 
 babel=$RACKT_PATH/node_modules/.bin/babel
 webpack=$RACKT_PATH/node_modules/.bin/webpack
-BUILD="$webpack --devtool source-map --config $RACKT_PATH/webpack.build.js"
+
+# get user defined config if any or use rackt-cli one
+. $RACKT_PATH/tasks/getFilePath
+webpackConfig=`getFilePath webpack.build.js`
+
+
 
 # Clean old build
 rm -rf build/
 
-# Transpile ES6
-$babel -d build/lib ./lib
-
-# Generate bundle
-mkdir -p dist
+# Generate bundle for NPM
+BUILD="$webpack --devtool source-map --config $webpackConfig --output-path ./build --output-filename index.js"
+mkdir -p build
 eval $BUILD
-eval "MINIFY=1 $BUILD"
+#$babel -d build/lib ./lib
+
+
+# Generate bundle for Bower
+DIST="$webpack --devtool source-map --config $webpackConfig"
+mkdir -p dist
+eval $DIST
+eval "MINIFY=1 $DIST"
 
 # Copy package
 cp README.md build/
-node -p 'p=require("./package");p.scripts=p.devDependencies=undefined;JSON.stringify(p,null,2)' > build/package.json
+node -p 'p=require("./package");p.scripts=p.devDependencies=undefined;p.main="./index.js";JSON.stringify(p,null,2)' > build/package.json

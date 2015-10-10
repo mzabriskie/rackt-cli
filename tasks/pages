@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# the pages task generates a new orphan gh-pages branch
+# this branch will include all builded examples and a generic index.html
+# branch is pushed to github to update `http://username.github.io/project-name`
+
 # make sure working directory is clean
 DIRTY=$(git status | grep modified -c)
 let DIRTY+=$(git status | grep Untracked -c)
@@ -10,37 +14,39 @@ if [ $DIRTY -gt 0 ] && [ "$1" != "-f" ]; then
   exit 1
 fi
 
-# delete gh-pages branch
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
 if [ "$BRANCH" == "gh-pages" ]; then
-  git checkout master
+  echo "Switch first to the branch you wish to create pages from"
+  exit 1
 fi
+
+echo "▶ delete local branch gh-pages"
 git branch -D gh-pages
-git push origin :gh-pages
+echo "▶ create local orphan branch gh-pages"
+git checkout --orphan gh-pages
 
-# build examples
-$RACKT_PATH/node_modules/.bin/webpack --config $RACKT_PATH/webpack.config.js
+# get user defined config if any or use rackt-cli one
+. $RACKT_PATH/tasks/getFilePath
+webpackConfig=`getFilePath webpack.config.js`
 
-# remove superfluous files
-find . -type f | egrep -v ".git/|examples/" | xargs rm
-find . -type d -empty -delete
-rm -rf node_modules
+$RACKT_PATH/node_modules/.bin/webpack --config $webpackConfig
 
-# move example files to root
-mv examples/* ./
-rm -rf examples/
-
-# add jekyll config
+# exclude everything from git staging except examples
+find -E . ! -regex '.*/(examples|node_modules|\.git).*' -exec git rm -r --cached {} \;
+git add examples
 echo "include: [__build__]" > _config.yml
+git add _config.yml
 
-# create gh-pages branch
-git checkout -b gh-pages
-git rm -rf .
-git add .
+# create basic homepage using rackt-cli babel-node
+echo `$(dirname "$0")/../node_modules/.bin/babel-node $(dirname "$0")/getExamplesIndex.js` > index.html
+git add index.html
+
+echo "▶ commit & push"
 git commit -m "updating gh-pages"
 git push -f origin gh-pages
-git checkout $BRANCH
 
-# restore node modules
-npm install
+echo "▶ restore $BRANCH"
+git add .
+git commit -m 'dummy commit'
+git checkout $BRANCH

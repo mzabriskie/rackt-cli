@@ -19,13 +19,14 @@ if (process.env.MINIFY) {
 module.exports = {
   entry: path.resolve(BASE_DIR, getPackageMain()),
   output: {
-    filename: path.resolve(BASE_DIR, 'dist/' + COMPONENT_FILE + '.js'),
+    filename: COMPONENT_FILE + '.js',
+    path: path.resolve(BASE_DIR, 'dist/'),
     library: COMPONENT_NAME,
     libraryTarget: 'umd'
   },
   externals: {
-    'react': 'React',
-    'react/addons': 'React'
+    'react': 'react',
+    'react/addons': 'react'
   },
   module: {
     loaders: [
