@@ -1,5 +1,9 @@
 #!../node_modules/.bin/babel-node
 
+/*
+ Build a basic page for the examples index
+*/
+
 import fs from 'fs';
 import path from 'path';
 
@@ -10,8 +14,15 @@ function generateIndex({pkg, examples=[]}={}) {
   }).join('\n');
 
   return `
+    <style>
+    body {
+      color: #333;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-weight: 200;
+    }
+    </style>
     <title>${pkg.name} Examples</title>
-    <h1>${pkg.name} Examples</h1>
+    <h1>${pkg.name} Examples - ${pkg.version}</h1>
     <h3><a href="${pkg.homepage}">${pkg.homepage}</a></h3>
     <p>${pkg.description}</p>
     <ul>
