@@ -53,3 +53,8 @@
 ### 0.5.2 (Sep 09, 2015)
 
 - [6f2facf](../../commit/6f2facf) Fixing issue with React being bundled with components.
+
+### 0.5.3 (Oct 22, 2015)
+
+- [75f9fa1](../../commit/75f9fa1) Updating dependencies.
+- [3eae18e](../../commit/3eae18e) Fixing issue with ReactDOM being bundled with components.
