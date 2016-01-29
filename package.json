@@ -39,6 +39,7 @@
     "loom": "3.1.2",
     "minimist": "1.2.0",
     "mocha": "2.3.3",
+    "originate": "^0.1.5",
     "react": "0.14.0",
     "rf-release": "mzabriskie/rf-release",
     "webpack": "1.12.2",
