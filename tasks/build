@@ -1,14 +1,12 @@
 #!/bin/bash -e
 
-babel=$RACKT_PATH/node_modules/.bin/babel
-webpack=$RACKT_PATH/node_modules/.bin/webpack
-BUILD="$webpack --devtool source-map --config $RACKT_PATH/webpack.build.js"
+BUILD="webpack --devtool source-map --config $RACKT_PATH/webpack.build.js"
 
 # Clean old build
 rm -rf build/
 
 # Transpile ES6
-$babel -d build/lib ./lib
+babel -d build/lib ./lib
 
 # Generate bundle
 mkdir -p dist

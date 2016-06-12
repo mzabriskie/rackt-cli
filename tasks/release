@@ -2,7 +2,7 @@
 
 if [ "$1" == "--preview" ] || [ "$1" == "-P" ] || [ "$1" == "-p" ]; then
   # Preview release
-  $RACKT_PATH/node_modules/rf-release/node_modules/.bin/changelog -t preview -s
+  changelog -t preview -s
 else
   # build task has to be run prior to release module
   # the release module is what prompts for next version number
@@ -28,5 +28,5 @@ else
   # Release to npm
   $RACKT_PATH/tasks/build
   update_version 'build/package.json' $next_version
-  $RACKT_PATH/node_modules/.bin/release -v $next_version -f ./build
+  release -v $next_version -f ./build
 fi

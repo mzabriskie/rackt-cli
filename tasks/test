@@ -1,7 +1,4 @@
 #!/bin/bash
 
-eslint=$RACKT_PATH/node_modules/.bin/eslint
-karma=$RACKT_PATH/node_modules/.bin/karma
-
-$eslint -c $RACKT_PATH/eslint.json lib examples && \
-NODE_ENV=test $karma start $RACKT_PATH/karma.conf.js "$@"
+eslint -c $RACKT_PATH/eslint.json lib examples && \
+NODE_ENV=test karma start $RACKT_PATH/karma.conf.js "$@"
