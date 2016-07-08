@@ -7,7 +7,9 @@
     "rackt": "./bin/rackt"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "version": "git add CHANGELOG.md package.json",
+    "postversion": "git push & git push --tags"
   },
   "repository": {
     "type": "git",
