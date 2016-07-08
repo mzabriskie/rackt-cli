@@ -1,5 +1,10 @@
 # Changelog
 
+### 0.6.0 (Jul 08, 2016)
+
+- [52e37e8](../../commit/52e37e8) Pug local node_modules/.bin in `PATH`
+- [80a24d5](../../commit/80a24d5) Upgrade babel-eslint
+
 ### 0.5.4 (Jan 29, 2016)
 
 - [1f350d7](../../commit/1f350d7) Adding `originate` as a dependency.
