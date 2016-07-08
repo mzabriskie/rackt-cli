@@ -25,6 +25,12 @@ cd "`dirname "${SCRIPT_PATH}"`" > /dev/null
 SCRIPT_PATH="`pwd`";
 popd > /dev/null
 
+# put local module binaries first in PATH, to 1) enable the
+# shell scripts to find them, and 2) ensure they are loaded
+# before any other (parent) binaries since npm will put
+# parent node_modules in PATH when run via npm run
+export PATH="${SCRIPT_PATH}/../node_modules/.bin:${PATH}"
+
 # get the path to the task
 TASK_PATH=$SCRIPT_PATH/../tasks/$TASK
 

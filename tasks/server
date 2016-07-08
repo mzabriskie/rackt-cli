@@ -1,5 +1,3 @@
 #!/bin/bash
 
-server=$RACKT_PATH/node_modules/.bin/webpack-dev-server
-
-$server --inline --config $RACKT_PATH/webpack.config.js --content-base examples/ "$@"
+webpack-dev-server --inline --config $RACKT_PATH/webpack.config.js --content-base examples/ "$@"
