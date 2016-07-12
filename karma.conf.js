@@ -62,7 +62,18 @@ module.exports = function(config) {
       stats: {
         colors: true
       }
-    }
+    },
+
+    plugins: [
+      require('karma-webpack'),
+      require('karma-sourcemap-loader'),
+      require('karma-mocha'),
+      require('karma-chrome-launcher'),
+      require('karma-firefox-launcher'),
+      require('karma-ie-launcher'),
+      require('karma-phantomjs-launcher'),
+      require('karma-safari-launcher')
+    ]
   };
 
   tests.forEach(function (test) {
