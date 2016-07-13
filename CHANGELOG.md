@@ -1,8 +1,12 @@
 # Changelog
 
+### 0.6.1 (Jul 12, 2016)
+
+- [8a19659](../../commit/8a19659) Fix plugins for karma
+
 ### 0.6.0 (Jul 08, 2016)
 
-- [52e37e8](../../commit/52e37e8) Pug local node_modules/.bin in `PATH`
+- [52e37e8](../../commit/52e37e8) Put local node_modules/.bin in `PATH`
 - [80a24d5](../../commit/80a24d5) Upgrade babel-eslint
 
 ### 0.5.4 (Jan 29, 2016)
