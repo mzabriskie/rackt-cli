@@ -24,9 +24,24 @@ module.exports = {
     libraryTarget: 'umd'
   },
   externals: {
-    'react': 'React',
-    'react/addons': 'React',
-    'react-dom': 'ReactDOM'
+    'react': {
+      root: 'React',
+      commonjs2: 'react',
+      commonjs: 'react',
+      amd: 'react'
+    },
+    'react-dom': {
+      root: 'ReactDOM',
+      commonjs2: 'react-dom',
+      commonjs: 'react-dom',
+      amd: 'react-dom'
+    },
+    'react/addons': {
+      root: 'React',
+      commonjs2: 'react',
+      commonjs: 'react',
+      amd: 'react'
+    }
   },
   module: {
     loaders: [
