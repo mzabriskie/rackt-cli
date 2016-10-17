@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.7.0 (Oct 17, 2016)
+
+- [fa7dc51](../../commit/fa7dc51) Make UMD bundle compatible with RequireJS
+
 ### 0.6.1 (Jul 12, 2016)
 
 - [8a19659](../../commit/8a19659) Fix plugins for karma
