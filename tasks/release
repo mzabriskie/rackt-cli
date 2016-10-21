@@ -25,8 +25,21 @@ else
     exit 1
   fi
 
-  # Release to npm
+  # Run build
   $RACKT_PATH/tasks/build
   update_version 'build/package.json' $next_version
-  release -v $next_version -f ./build
+
+  # Create artifact
+  ARTIFACT=___release_artifact
+  rm -rf $ARTIFACT
+  mkdir $ARTIFACT
+  mkdir $ARTIFACT/dist/
+  cp -rf build/ $ARTIFACT
+  cp -rf dist/ $ARTIFACT/dist/
+  
+  # Release to npm
+  release -v $next_version -f $ARTIFACT
+
+  # Delete artifact
+  rm -rf $ARTIFACT
 fi
