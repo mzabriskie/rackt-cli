@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.8.0 (Oct 21, 2016)
+
+- [15af13e](../../commit/15af13e) Including dist/ when releasing to npm
+
 ### 0.7.0 (Oct 17, 2016)
 
 - [fa7dc51](../../commit/fa7dc51) Make UMD bundle compatible with RequireJS
